@@ -69,7 +69,7 @@ struct Day2: Day {
             .product
         print(solution1)
         
-        // Task 1
+        // Task 2
         let solution2 = parsedData
             .reduce(into: Submarine.zero) { submarine, rule in
                 submarine.move2(following: rule)
