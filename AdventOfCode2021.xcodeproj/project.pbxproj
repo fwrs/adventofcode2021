@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B82E0B0C275766F00098520E /* AdventOfCode2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E0B0B275766F00098520E /* AdventOfCode2021.swift */; };
+		B87119E52758DC82001E86DC /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87119E42758DC82001E86DC /* Day2.swift */; };
 		B8DED4832757677F00835AA9 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DED4822757677F00835AA9 /* Day1.swift */; };
 		B8DED4852757681200835AA9 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DED4842757681200835AA9 /* Day.swift */; };
 		B8F654FA27577FA300BCCC00 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F654F927577FA300BCCC00 /* GlobalExtensions.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		B82E0B08275766F00098520E /* AdventOfCode2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82E0B0B275766F00098520E /* AdventOfCode2021.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2021.swift; sourceTree = "<group>"; };
+		B87119E42758DC82001E86DC /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		B8DED4822757677F00835AA9 /* Day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1.swift; sourceTree = "<group>"; };
 		B8DED4842757681200835AA9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B8F654F927577FA300BCCC00 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				B8F654F927577FA300BCCC00 /* GlobalExtensions.swift */,
 				B8DED4842757681200835AA9 /* Day.swift */,
 				B8DED4822757677F00835AA9 /* Day1.swift */,
+				B87119E42758DC82001E86DC /* Day2.swift */,
 			);
 			path = AdventOfCode2021;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8DED4832757677F00835AA9 /* Day1.swift in Sources */,
+				B87119E52758DC82001E86DC /* Day2.swift in Sources */,
 				B82E0B0C275766F00098520E /* AdventOfCode2021.swift in Sources */,
 				B8F654FA27577FA300BCCC00 /* GlobalExtensions.swift in Sources */,
 				B8DED4852757681200835AA9 /* Day.swift in Sources */,
