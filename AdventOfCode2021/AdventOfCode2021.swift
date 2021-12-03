@@ -2,6 +2,6 @@ import Foundation
 
 @main class AdventOfCode2021 {
     static func main() {
-        Day2.execute()
+        Day3.execute()
     }
 }

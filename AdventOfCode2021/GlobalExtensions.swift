@@ -34,3 +34,8 @@ extension ExpressibleByIntegerLiteral {
         self = booleanLiteral ? 1 : 0
     }
 }
+
+// Enumerated sequence annoyances
+extension EnumeratedSequence {
+    var asPairs: [Element] { map { ($0, $1) } }
+}
