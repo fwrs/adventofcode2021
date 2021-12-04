@@ -48,8 +48,7 @@ struct Day4: Day {
     static let inputData = "<#Fill in the input data here.#>"
 
     static func execute() {
-        var parsedData = inputData
-            .components(separatedBy: .newlines)
+        var parsedData = inputData.components(separatedBy: .newlines)
         let itemOrder = parsedData.removeFirst().split(separator: ",").compactMap { Int($0) }
         let boards = parsedData.split(separator: "").map(\.asMatrix).map { WinnableBingoBoard(board: $0) }
         
