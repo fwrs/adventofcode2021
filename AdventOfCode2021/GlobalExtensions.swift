@@ -39,3 +39,10 @@ extension ExpressibleByIntegerLiteral {
 extension EnumeratedSequence {
     var asPairs: [Element] { map { ($0, $1) } }
 }
+
+// Count without filter
+extension Collection {
+    func count(where test: (Element) throws -> Bool) rethrows -> Int {
+        try self.filter(test).count
+    }
+}
