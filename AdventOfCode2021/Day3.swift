@@ -10,11 +10,11 @@ fileprivate extension Array where Element == [Int] {
 
 fileprivate extension Array where Element == Int {
     func compareHighestOccurences(first: Int, second: Int) -> Int {
-        filter { $0 == first }.count > filter { $0 == second }.count ? first : second
+        count { $0 == first } > count { $0 == second } ? first : second
     }
     
     func compareLowestOccurences(first: Int, second: Int) -> Int {
-        filter { $0 == first }.count < filter { $0 == second }.count ? first : second
+        count { $0 == first } < count { $0 == second } ? first : second
     }
     
     var binaryToDecimal: Int {
