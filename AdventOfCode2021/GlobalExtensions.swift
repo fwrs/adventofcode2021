@@ -43,6 +43,6 @@ extension EnumeratedSequence {
 // Count without filter
 extension Collection {
     func count(where test: (Element) throws -> Bool) rethrows -> Int {
-        try self.filter(test).count
+        try filter(test).count
     }
 }

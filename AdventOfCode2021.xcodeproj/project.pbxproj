@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B82063EF275CC97600634B09 /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82063EE275CC97600634B09 /* Day5.swift */; };
 		B82E0B0C275766F00098520E /* AdventOfCode2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E0B0B275766F00098520E /* AdventOfCode2021.swift */; };
 		B842160B275A203C00F5297C /* Day3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842160A275A203C00F5297C /* Day3.swift */; };
 		B87119E52758DC82001E86DC /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87119E42758DC82001E86DC /* Day2.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B82063EE275CC97600634B09 /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
 		B82E0B08275766F00098520E /* AdventOfCode2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82E0B0B275766F00098520E /* AdventOfCode2021.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2021.swift; sourceTree = "<group>"; };
 		B842160A275A203C00F5297C /* Day3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				B87119E42758DC82001E86DC /* Day2.swift */,
 				B842160A275A203C00F5297C /* Day3.swift */,
 				B8A037E7275B721600E7675B /* Day4.swift */,
+				B82063EE275CC97600634B09 /* Day5.swift */,
 			);
 			path = AdventOfCode2021;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B82063EF275CC97600634B09 /* Day5.swift in Sources */,
 				B8DED4832757677F00835AA9 /* Day1.swift in Sources */,
 				B87119E52758DC82001E86DC /* Day2.swift in Sources */,
 				B82E0B0C275766F00098520E /* AdventOfCode2021.swift in Sources */,
