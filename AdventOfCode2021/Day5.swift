@@ -13,8 +13,7 @@ fileprivate struct Line {
     init?(_ string: String) {
         let components = string
             .components(separatedBy: " -> ")
-            .map { $0.components(separatedBy: ",") }
-            .flatMap { $0 }
+            .flatMap { $0.components(separatedBy: ",") }
             .compactMap(Int.init)
         
         guard components.count == 4 else { return nil }
