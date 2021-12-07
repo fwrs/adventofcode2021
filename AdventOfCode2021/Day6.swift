@@ -18,7 +18,7 @@ fileprivate extension Array where Element == Int {
 }
 
 struct Day6: Day {
-    static let inputData = "3,4,3,1,2"
+    static let inputData = "<#Fill in the input data here.#>"
 
     static func execute() {
         let parsedData = inputData.components(separatedBy: .punctuationCharacters).compactMap(Int.init)
