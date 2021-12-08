@@ -45,7 +45,7 @@ fileprivate struct Line {
     }
 }
 
-extension Array where Element == [Int] {
+fileprivate extension Array where Element == [Int] {
     static func empty(size: Int) -> Self {
         Array(repeating: .init(repeating: 0, count: size + 1), count: size + 1)
     }
