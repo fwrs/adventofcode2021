@@ -28,6 +28,11 @@ extension Array where Element == Int {
     var sum: Int { reduce(0, +) }
 }
 
+// Product shorthand
+extension Array where Element == Int {
+    var product: Int { reduce(1, *) }
+}
+
 // Convert Bool to Int easily
 extension ExpressibleByIntegerLiteral {
     init(_ booleanLiteral: BooleanLiteralType) {
