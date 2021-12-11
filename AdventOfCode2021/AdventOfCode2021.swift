@@ -1,3 +1,4 @@
+import Algorithms
 import Foundation
 
 @main class AdventOfCode2021 {

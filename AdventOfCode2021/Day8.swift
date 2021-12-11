@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate struct Line {
+private struct Line {
     let clues: [String]
     let output: [String]
     

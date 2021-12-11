@@ -9,21 +9,15 @@ struct Day1: Day {
             .compactMap(Int.init)
         
         // Task 1
-        let solution1 = parsedData
-            .reduce((count: 0, last: Int?.none)) { accum, next in
-                (accum.count + Int(next > accum.last ?? next), next)
-            }
-            .count
+        let solution1 = parsedData.adjacentPairs().count { $0.0 < $0.1 }
         print(solution1)
         
         // Task 2
         let solution2 = parsedData
-            .indices
-            .reduce((count: 0, last: [Int]())) { accum, next in
-                let current = Array(parsedData[safe: next + 1..<next + 4] ?? [])
-                return (accum.count + Int(current.sum > accum.last.sum), current)
-            }
-            .count
+            .windows(ofCount: 4)
+            .map(Array.init)
+            .filter { $0.count == 4 }
+            .count { $0[0] < $0[3] }
         print(solution2)
     }
 }

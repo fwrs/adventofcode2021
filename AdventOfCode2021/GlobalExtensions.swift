@@ -23,13 +23,9 @@ extension Array {
     }
 }
 
-// Sum shorthand
-extension Array where Element == Int {
+// Sum, product shorthand
+extension Sequence where Element == Int {
     var sum: Int { reduce(0, +) }
-}
-
-// Product shorthand
-extension Array where Element == Int {
     var product: Int { reduce(1, *) }
 }
 
@@ -46,7 +42,7 @@ extension EnumeratedSequence {
 }
 
 // Count without filter
-extension Collection {
+extension Sequence {
     func count(where test: (Element) throws -> Bool) rethrows -> Int {
         try filter(test).count
     }

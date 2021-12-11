@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate extension Array where Element == [Int] {
+private extension Array where Element == [Int] {
     var rotated: Self {
         first?.indices.map { index in
             self.map { $0[index] }
@@ -8,41 +8,33 @@ fileprivate extension Array where Element == [Int] {
     }
 }
 
-fileprivate extension Array where Element == Int {
+private extension Array where Element == Int {
     var binaryToDecimal: Int {
         Int(map { String($0) }.reduce("", +), radix: 2) ?? 0
     }
     
-    func compareHighestOccurences(first: Int, second: Int) -> Int {
-        count { $0 == first } > count { $0 == second } ? first : second
-    }
-    
-    func compareLowestOccurences(first: Int, second: Int) -> Int {
-        count { $0 == first } < count { $0 == second } ? first : second
+    func findMoreCommon(_ first: Int, _ second: Int, using comparisonFunction: (Int, Int) -> Bool) -> Int {
+        comparisonFunction(count { $0 == first }, count { $0 == second }) ? first : second
     }
 }
 
-fileprivate struct Submarine {
-    var gammaRate = 0
-    var epsilonRate = 0
-    
-    var oxygenGeneratorRating = 0
-    var co2ScrubberRating = 0
-    
-    mutating func calculate1(using diagnosticReport: [[Int]]) {
-        gammaRate = diagnosticReport
+private struct Submarine {
+    static func calculatePowerConsumption(using diagnosticReport: [[Int]]) -> Int {
+        let gammaRate = diagnosticReport
             .rotated
-            .map { $0.compareHighestOccurences(first: 0, second: 1) }
+            .map { $0.findMoreCommon(0, 1, using: >) }
             .binaryToDecimal
         
-        epsilonRate = diagnosticReport
+        let epsilonRate = diagnosticReport
             .rotated
-            .map { $0.compareLowestOccurences(first: 0, second: 1) }
+            .map { $0.findMoreCommon(0, 1, using: <) }
             .binaryToDecimal
+        
+        return gammaRate * epsilonRate
     }
     
-    mutating func calculate2(using diagnosticReport: [[Int]]) {
-        oxygenGeneratorRating = diagnosticReport
+    static func calculateLifeSupportRating(using diagnosticReport: [[Int]]) -> Int {
+        let oxygenGeneratorRating = diagnosticReport
             .rotated
             .enumerated()
             .reduce(diagnosticReport.enumerated().asPairs) { filteredReport, line in
@@ -50,7 +42,7 @@ fileprivate struct Submarine {
                     .enumerated()
                     .filter { row in filteredReport.contains { $0.offset == row.offset } }
                     .map { $0.element }
-                    .compareHighestOccurences(first: 0, second: 1)
+                    .findMoreCommon(0, 1, using: >)
                 let newFilteredReport = filteredReport.filter { $0.element[line.offset] != mostCommon }
                 return newFilteredReport.isEmpty ? filteredReport : newFilteredReport
             }
@@ -58,7 +50,7 @@ fileprivate struct Submarine {
             .first?
             .binaryToDecimal ?? 0
         
-        co2ScrubberRating = diagnosticReport
+        let co2ScrubberRating = diagnosticReport
             .rotated
             .enumerated()
             .reduce(diagnosticReport.enumerated().asPairs) { filteredReport, line in
@@ -66,21 +58,15 @@ fileprivate struct Submarine {
                     .enumerated()
                     .filter { row in filteredReport.contains { $0.offset == row.offset } }
                     .map { $0.element }
-                    .compareLowestOccurences(first: 1, second: 0)
+                    .findMoreCommon(1, 0, using: <)
                 let newFilteredReport = filteredReport.filter { $0.element[line.offset] != leastCommon }
                 return newFilteredReport.isEmpty ? filteredReport : newFilteredReport
             }
             .map { $0.element }
             .first?
             .binaryToDecimal ?? 0
-    }
-    
-    var powerConsumption: Int {
-        gammaRate * epsilonRate
-    }
-    
-    var lifeSupportRating: Int {
-        oxygenGeneratorRating * co2ScrubberRating
+        
+        return oxygenGeneratorRating * co2ScrubberRating
     }
 }
 
@@ -90,18 +76,14 @@ struct Day3: Day {
     static func execute() {
         let parsedData = inputData
             .components(separatedBy: .newlines)
-            .map { $0.map { Int($0.description) ?? 0 } }
-        
-        var submarine = Submarine()
+            .map { $0.map(String.init).compactMap(Int.init) }
         
         // Task 1
-        submarine.calculate1(using: parsedData)
-        let solution1 = submarine.powerConsumption
+        let solution1 = Submarine.calculatePowerConsumption(using: parsedData)
         print(solution1)
         
         // Task 2
-        submarine.calculate2(using: parsedData)
-        let solution2 = submarine.lifeSupportRating
+        let solution2 = Submarine.calculateLifeSupportRating(using: parsedData)
         print(solution2)
     }
 }

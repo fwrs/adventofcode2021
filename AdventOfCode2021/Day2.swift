@@ -1,10 +1,10 @@
 import Foundation
 
-fileprivate enum Direction: String {
+private enum Direction: String {
     case up, down, forward
 }
 
-fileprivate struct Movement {
+private struct Movement {
     let direction: Direction
     let scalar: Int
     
@@ -20,37 +20,40 @@ fileprivate struct Movement {
     }
 }
 
-fileprivate struct Submarine {
-    var depth: Int
-    var horizontalPosition: Int
-    var aim: Int
+private struct Submarine {
+    let depth: Int
+    let progress: Int
+    let aim: Int
     
-    static var zero: Self { Submarine(depth: .zero, horizontalPosition: .zero, aim: .zero) }
+    var product: Int { depth * progress }
     
-    mutating func move1(following rule: Movement) {
+    internal init(depth: Int = 0, progress: Int = 0, aim: Int = 0) {
+        self.depth = depth
+        self.progress = progress
+        self.aim = aim
+    }
+    
+    func move1(following rule: Movement) -> Self {
         switch rule.direction {
         case .up:
-            depth -= rule.scalar
+            return .init(depth: depth - rule.scalar, progress: progress)
         case .down:
-            depth += rule.scalar
+            return .init(depth: depth + rule.scalar, progress: progress)
         case .forward:
-            horizontalPosition += rule.scalar
+            return .init(depth: depth, progress: progress + rule.scalar)
         }
     }
     
-    mutating func move2(following rule: Movement) {
+    func move2(following rule: Movement) -> Self {
         switch rule.direction {
         case .up:
-            aim -= rule.scalar
+            return .init(depth: depth, progress: progress, aim: aim - rule.scalar)
         case .down:
-            aim += rule.scalar
+            return .init(depth: depth, progress: progress, aim: aim + rule.scalar)
         case .forward:
-            horizontalPosition += rule.scalar
-            depth += rule.scalar * aim
+            return .init(depth: depth + rule.scalar * aim, progress: progress + rule.scalar, aim: aim)
         }
     }
-    
-    var product: Int { depth * horizontalPosition }
 }
 
 struct Day2: Day {
@@ -63,17 +66,13 @@ struct Day2: Day {
         
         // Task 1
         let solution1 = parsedData
-            .reduce(into: Submarine.zero) { submarine, rule in
-                submarine.move1(following: rule)
-            }
+            .reduce(Submarine()) { $0.move1(following: $1) }
             .product
         print(solution1)
         
         // Task 2
         let solution2 = parsedData
-            .reduce(into: Submarine.zero) { submarine, rule in
-                submarine.move2(following: rule)
-            }
+            .reduce(Submarine()) { $0.move2(following: $1) }
             .product
         print(solution2)
     }

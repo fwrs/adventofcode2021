@@ -1,10 +1,10 @@
 import Foundation
 
-fileprivate enum ParenthesesValidationError: Error {
+private enum ParenthesesValidationError: Error {
     case unnecessaryClose(char: Character), incomplete(stack: [Character])
 }
 
-fileprivate extension String {
+private extension String {
     func validateParentheses(groups: [(open: Character, close: Character)]) -> ParenthesesValidationError? {
         do {
             let result = try reduce([Character]()) { stack, char in
@@ -23,13 +23,13 @@ fileprivate extension String {
     }
 }
 
-fileprivate extension Array where Element == Character {
+private extension Array where Element == Character {
     func completeParentheses(groups: [(open: Character, close: Character)]) -> Self {
         reversed().compactMap { char in groups.first { $0.open == char }?.close }
     }
 }
 
-fileprivate extension Array {
+private extension Array {
     var middle: Element? {
         self[(count > 1 ? count - 1 : count) / 2]
     }

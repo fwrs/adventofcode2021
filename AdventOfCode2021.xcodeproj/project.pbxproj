@@ -16,6 +16,10 @@
 		B8AC180A276212490072FDB6 /* Day9.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC1809276212490072FDB6 /* Day9.swift */; };
 		B8C147502760B6C100185E38 /* Day8.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1474F2760B6C100185E38 /* Day8.swift */; };
 		B8CD9D4E275E0272004EC7B8 /* Day6.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD9D4D275E0272004EC7B8 /* Day6.swift */; };
+		B8DCC9352765490100535CD7 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = B8DCC9342765490100535CD7 /* Collections */; };
+		B8DCC9372765490100535CD7 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = B8DCC9362765490100535CD7 /* DequeModule */; };
+		B8DCC9392765490100535CD7 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = B8DCC9382765490100535CD7 /* OrderedCollections */; };
+		B8DCC93C27654A6D00535CD7 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = B8DCC93B27654A6D00535CD7 /* Algorithms */; };
 		B8DCCC622764CE7C00863EB7 /* Day10.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCCC612764CE7C00863EB7 /* Day10.swift */; };
 		B8DCCC642764E3E500863EB7 /* Day11.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCCC632764E3E500863EB7 /* Day11.swift */; };
 		B8DED4832757677F00835AA9 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DED4822757677F00835AA9 /* Day1.swift */; };
@@ -58,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8DCC93C27654A6D00535CD7 /* Algorithms in Frameworks */,
+				B8DCC9352765490100535CD7 /* Collections in Frameworks */,
+				B8DCC9372765490100535CD7 /* DequeModule in Frameworks */,
+				B8DCC9392765490100535CD7 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +125,12 @@
 			dependencies = (
 			);
 			name = AdventOfCode2021;
+			packageProductDependencies = (
+				B8DCC9342765490100535CD7 /* Collections */,
+				B8DCC9362765490100535CD7 /* DequeModule */,
+				B8DCC9382765490100535CD7 /* OrderedCollections */,
+				B8DCC93B27654A6D00535CD7 /* Algorithms */,
+			);
 			productName = AdventOfCode2021;
 			productReference = B82E0B08275766F00098520E /* AdventOfCode2021 */;
 			productType = "com.apple.product-type.tool";
@@ -145,6 +159,10 @@
 				Base,
 			);
 			mainGroup = B82E0AFF275766F00098520E;
+			packageReferences = (
+				B8DCC9332765490100535CD7 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				B8DCC93A27654A6D00535CD7 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = B82E0B09275766F00098520E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +356,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8DCC9332765490100535CD7 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B8DCC93A27654A6D00535CD7 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8DCC9342765490100535CD7 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8DCC9332765490100535CD7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		B8DCC9362765490100535CD7 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8DCC9332765490100535CD7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		B8DCC9382765490100535CD7 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8DCC9332765490100535CD7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		B8DCC93B27654A6D00535CD7 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8DCC93A27654A6D00535CD7 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B82E0B00275766F00098520E /* Project object */;
 }

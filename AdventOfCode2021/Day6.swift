@@ -1,19 +1,19 @@
 import Foundation
 
-fileprivate extension Array where Element == Int {
+private extension Array where Element == Int {
     static let newbornCooldown = 8
-    static let postbirthCooldown = 6
+    static let postbirthCooldown = 7
     
     func iterateLanternfish(iterationCount: Int) -> Int {
         let mapping = reduce(into: Array(repeating: 0, count: Self.newbornCooldown + 1)) { result, health in
             result[health] += 1
         }
         
-        return (0..<iterationCount).reduce(mapping) { result, _ in
-            Array(result.suffix(from: 1) + result.prefix(1))
-                .enumerated()
-                .map { $0.element + ($0.offset == Self.postbirthCooldown ? result[0] : 0) }
-        }.sum
+        return sequence(state: mapping) { result -> [Int] in
+            result[Self.postbirthCooldown] += result[0]
+            result.rotate(toStartAt: 1)
+            return result
+        }.enumerated().first { $0.offset == iterationCount - 1 }?.element.sum ?? 0
     }
 }
 

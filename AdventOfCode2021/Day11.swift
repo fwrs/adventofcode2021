@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate extension Array where Element == [Int] {
+private extension Array where Element == [Int] {
     static let offsets = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]
     
     var flattenedGridComponents: [(x: Int, y: Int, value: Int)] {

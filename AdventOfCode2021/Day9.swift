@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate struct GridItem {
+private struct GridItem {
     let number: Int
     var isBorder: Bool { number == 9 }
     var isMarked: Bool = false
@@ -11,7 +11,7 @@ fileprivate struct GridItem {
     }
 }
 
-fileprivate extension Array where Element == [GridItem] {
+private extension Array where Element == [GridItem] {
     static let offsets = [(0, 0), (-1, 0), (1, 0), (0, -1), (0, 1)]
     
     var flattenedGridComponents: [(x: Int, y: Int, value: GridItem)] {

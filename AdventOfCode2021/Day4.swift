@@ -1,12 +1,12 @@
 import Foundation
 
-fileprivate struct MarkableBingoItem {
+private struct MarkableBingoItem {
     let item: Int
     var isMarked: Bool = false
     var marked: Self { MarkableBingoItem(item: item, isMarked: true) }
 }
 
-fileprivate extension Array where Element == [MarkableBingoItem] {
+private extension Array where Element == [MarkableBingoItem] {
     var rotated: Self {
         first?.indices.map { index in
             self.map { $0[index] }
@@ -18,7 +18,7 @@ fileprivate extension Array where Element == [MarkableBingoItem] {
     }
 }
 
-fileprivate struct WinnableBingoBoard {
+private struct WinnableBingoBoard {
     var board: [[MarkableBingoItem]]
     var hasWon: Bool = false
     var isYetToWin: Bool { !hasWon }
@@ -38,7 +38,7 @@ fileprivate struct WinnableBingoBoard {
     }
 }
 
-fileprivate extension ArraySlice where Element == String {
+private extension ArraySlice where Element == String {
     var asMatrix: [[MarkableBingoItem]] {
         map { $0.components(separatedBy: .whitespaces).compactMap(Int.init).map { MarkableBingoItem(item: $0) } }
     }

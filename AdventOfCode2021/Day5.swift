@@ -1,6 +1,6 @@
 import Foundation
 
-fileprivate struct Line {
+private struct Line {
     let origin: (x: Int, y: Int)
     let destination: (x: Int, y: Int)
     
@@ -45,7 +45,7 @@ fileprivate struct Line {
     }
 }
 
-fileprivate extension Array where Element == [Int] {
+private extension Array where Element == [Int] {
     static func empty(size: Int) -> Self {
         Array(repeating: .init(repeating: 0, count: size + 1), count: size + 1)
     }
