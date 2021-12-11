@@ -14,14 +14,14 @@ fileprivate struct GridItem {
 fileprivate extension Array where Element == [GridItem] {
     static let offsets = [(0, 0), (-1, 0), (1, 0), (0, -1), (0, 1)]
     
+    var flattenedGridComponents: [(x: Int, y: Int, value: GridItem)] {
+        map { $0.enumerated().asPairs }.enumerated().asPairs.flatMap { r, e in e.map { (r, $0, $1) } }
+    }
+    
     mutating func findBasin(row: Int, col: Int) -> Int? {
         guard let item = self[safe: row]?[safe: col], !item.isBorder, !item.isMarked else { return nil }
         self[row][col].isMarked = true
         return Array.offsets.compactMap { findBasin(row: row + $0, col: col + $1) }.sum + 1
-    }
-
-    var flattenedGridComponents: [(x: Int, y: Int, value: GridItem)] {
-        map { $0.enumerated().asPairs }.enumerated().asPairs.flatMap { r, e in e.map { (r, $0, $1) } }
     }
 }
 
@@ -29,7 +29,9 @@ struct Day9: Day {
     static let inputData = "<#Fill in the input data here.#>"
 
     static func execute() {
-        var parsedData = inputData.components(separatedBy: .newlines).map { Array($0).map(String.init).compactMap(GridItem.init) }
+        var parsedData = inputData
+            .components(separatedBy: .newlines)
+            .map { Array($0).map(String.init).compactMap(GridItem.init) }
         
         // Task 1
         let solution1 = parsedData

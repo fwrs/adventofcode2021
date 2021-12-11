@@ -9,16 +9,16 @@ fileprivate extension Array where Element == [Int] {
 }
 
 fileprivate extension Array where Element == Int {
+    var binaryToDecimal: Int {
+        Int(map { String($0) }.reduce("", +), radix: 2) ?? 0
+    }
+    
     func compareHighestOccurences(first: Int, second: Int) -> Int {
         count { $0 == first } > count { $0 == second } ? first : second
     }
     
     func compareLowestOccurences(first: Int, second: Int) -> Int {
         count { $0 == first } < count { $0 == second } ? first : second
-    }
-    
-    var binaryToDecimal: Int {
-        Int(map { String($0) }.reduce("", +), radix: 2) ?? 0
     }
 }
 

@@ -21,7 +21,9 @@ struct Day6: Day {
     static let inputData = "<#Fill in the input data here.#>"
 
     static func execute() {
-        let parsedData = inputData.components(separatedBy: .punctuationCharacters).compactMap(Int.init)
+        let parsedData = inputData
+            .components(separatedBy: .punctuationCharacters)
+            .compactMap(Int.init)
         
         // Task 1
         let solution1 = parsedData.iterateLanternfish(iterationCount: 80)

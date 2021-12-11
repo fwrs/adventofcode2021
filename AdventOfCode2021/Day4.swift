@@ -28,13 +28,13 @@ fileprivate struct WinnableBingoBoard {
         board.contains { $0.allSatisfy(\.isMarked) } || board.rotated.contains { $0.allSatisfy(\.isMarked) }
     }
     
+    var score: Int {
+        board.flatMap { $0 }.filter { !$0.isMarked }.map(\.item).reduce(0, +) * (lastMarkedItem ?? 0)
+    }
+    
     func marked(item: Int) -> Self {
         let newBoard = board.map { $0.map { $0.item == item ? $0.marked : $0 } }
         return WinnableBingoBoard(board: newBoard, hasWon: newBoard.containsMarkedRow, lastMarkedItem: item)
-    }
-    
-    var score: Int {
-        board.flatMap { $0 }.filter { !$0.isMarked }.map(\.item).reduce(0, +) * (lastMarkedItem ?? 0)
     }
 }
 
@@ -49,8 +49,14 @@ struct Day4: Day {
 
     static func execute() {
         var parsedData = inputData.components(separatedBy: .newlines)
-        let itemOrder = parsedData.removeFirst().split(separator: ",").compactMap { Int($0) }
-        let boards = parsedData.split(separator: "").map(\.asMatrix).map { WinnableBingoBoard(board: $0) }
+        let itemOrder = parsedData
+            .removeFirst()
+            .split(separator: ",")
+            .compactMap { Int($0) }
+        let boards = parsedData
+            .split(separator: "")
+            .map(\.asMatrix)
+            .map { WinnableBingoBoard(board: $0) }
         
         // Task 1
         let solution1 = itemOrder
