@@ -29,7 +29,7 @@ private extension Array where Element == [Int] {
     }
     
     func findIterationWhenAllFlash() -> Int? {
-        zip(sequence(first: self, next: \.stepped), 0...).first { $0.0.flatMap { $0 }.allSatisfy { $0 > 9 } }?.1
+        sequence(first: self, next: \.stepped).enumerated().first { $0.element.flatMap { $0 }.allSatisfy { $0 > 9 } }?.offset
     }
 }
 
