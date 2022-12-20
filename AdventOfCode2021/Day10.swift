@@ -57,7 +57,7 @@ struct Day10: Day {
         // Task 2
         let solution2 = parsedData
             .compactMap {
-                if case let .incomplete(stack) = $0 .validateParentheses(groups: groups) {
+                if case let .incomplete(stack) = $0.validateParentheses(groups: groups) {
                     return stack.completeParentheses(groups: groups).reduce(0) {
                         (5 * $0) + (completionPoints[$1] ?? 0)
                     }
